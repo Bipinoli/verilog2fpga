@@ -13,3 +13,6 @@ It is a toolchain pipeline to synthesize a circuit for a ICE40HX1K-BLINK-EVN Fpg
 ## Windows / macOS
 On macOS and Windows, Docker runs in a separate VM so docker doesn't have a native access to the usb devices.
 You can look into [this post](https://bipinoli.github.io/2024/09/19/Dockerized-Verilog-to-FPGA-synthesis-pipeline.html) for details.
+
+## Inspired by
+https://github.com/reactive-systems/KitchenTimer/blob/master/clash/makefile
