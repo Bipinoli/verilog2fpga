@@ -21,7 +21,7 @@ RUN apt-get update && \
 
 RUN cabal update
 
-ENV PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/x86_64-linux-gnu/pkgconfig/
+ENV PKG_CONFIG_PATH=/usr/lib/pkgconfig/:/usr/lib/x86_64-linux-gnu/pkgconfig/
 
 WORKDIR /synthesis_pipeline
 
