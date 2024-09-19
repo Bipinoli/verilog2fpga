@@ -33,4 +33,3 @@ RUN cd icedude && \
     cabal v2-install && \
     cd ..
 
-COPY . .
