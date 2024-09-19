@@ -1,8 +1,22 @@
 #!/bin/sh
 
-VERILOG_FILE=btn_led.v
-TOP_MODULE=btn_led
-BUILDDIR=target
+if [ "$#" -ne 1 ]; then
+    echo "Usage: ./synthesize.sh src_directory"
+    echo "      src_directory must include '.v' and '.pcf' files"
+    exit 1
+fi
+
+VERILOG_DIR=$1
+VERILOG_FILE=`ls $1/*.v`
+PCF_FILE=`ls $1/*.pcf`
+
+FILENAME=$(basename $VERILOG_FILE)
+TOP_MODULE=${FILENAME%.*}
+
+BUILDDIR=target/$TOP_MODULE
+
+echo $TOP_MODULE
+echo $BUILDDIR
 
 mkdir -p $BUILDDIR
 
@@ -16,7 +30,7 @@ nextpnr-ice40 --pcf-allow-unconstrained \
     --hx1k \
     --package vq100 \
     --json $BUILDDIR/${TOP_MODULE}.json \
-    --pcf iceblink.pcf \
+    --pcf $PCF_FILE \
     --asc $BUILDDIR/${TOP_MODULE}.asc
 
 # Generate bitstream (.bin) from the "place and route file (.asc)"
